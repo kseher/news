@@ -1,0 +1,62 @@
+{% extends 'news/layout.html' %}
+
+
+{% block body %}
+    <h1 class='newspaper_name'>Neue Zeitung</h1>
+    <div class="content">
+        <h2>Eine Überschrift</h2>
+        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+            magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+            gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+            elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+            eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+            sit
+            amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
+            kasd
+            gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        </p>
+        <p>
+            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat
+            nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue
+            duis
+            dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+            euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+        </p>
+        <p>
+            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+            consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore
+            eu
+            feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit
+            augue duis dolore te feugait nulla facilisi.
+        </p>
+    </div>
+    
+    <h2>Kommentare</h2>
+    
+    {% if user.is_authenticated %}
+        <form class="comment__form">
+            <h3>Dein Kommentar:</h3>
+
+            {% csrf_token %}
+            {{ form }}
+            <p>
+                <input type="submit" value="Send" id='btn'>
+            </p>
+        </form>
+    {% endif %}
+        
+
+    <div class="allComments">
+        {% for comment in comments %}
+        <div class="comment">
+            <h3> {{comment.user.username}} schreibt:</h3>
+            <p>{{ comment.post }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+        
+{% endblock body %}
+    

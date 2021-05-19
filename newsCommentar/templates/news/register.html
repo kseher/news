@@ -1,0 +1,19 @@
+{% extends 'news/layout.html' %}
+
+
+{% block body %}
+<h1>Anmelden</h1>
+<form action="{% url 'register' %}" method="post" class='register'>
+    {% csrf_token %}
+    <input type="text" name="username" id="" placeholder="Dein Benutzername" class="register__input">
+    <input type="email" name="email" id="" placeholder="Deine E-Mail" class="register__input">
+    <input type="password" name="password" id="" placeholder="Dein Passwort" class="register__input">
+    <input type="password" name="confirmation" id="" placeholder="Wiederhole bitte dein Passwort" class="register__input">
+    <p>{{ massage }}</p>
+    <input type="submit" value="Send">
+</form>
+
+    
+{% endblock body %}
+
+    
